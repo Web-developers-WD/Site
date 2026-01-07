@@ -118,9 +118,10 @@
             gap: 0.75rem;
         }
 
-        .logo-icon {
-            font-size: 2.2rem;
-            font-weight: 800;
+        .logo-img {
+            height: 40px;
+            width: auto;
+            filter: invert(1);
         }
 
         nav ul {
@@ -343,23 +344,23 @@
             opacity: 0.9;
         }
 
-        .footer-links ul {
-            list-style: none;
+        .social-media {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1rem;
         }
 
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
+        .social-icon {
             color: var(--white);
+            font-size: 1.3rem;
+            opacity: 0.7;
+            transition: all var(--transition);
             text-decoration: none;
-            opacity: 0.6;
-            transition: opacity var(--transition);
         }
 
-        .footer-links a:hover {
+        .social-icon:hover {
             opacity: 1;
+            transform: translateY(-3px);
         }
 
         .copyright {
@@ -368,6 +369,14 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             opacity: 0.5;
+        }
+
+        .company-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -436,6 +445,10 @@
                 flex-direction: column;
                 gap: 2.5rem;
             }
+            
+            .logo-img {
+                height: 35px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -453,6 +466,10 @@
             
             .course-card h3 {
                 font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 30px;
             }
         }
 
@@ -480,7 +497,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <span class="logo-icon">SW</span>
+                <img src="https://img.icons8.com/ios-filled/100/ffffff/cyber-security.png" alt="Secure Worldz Logo" class="logo-img">
                 <span>SECURE WORLDZ</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -503,7 +520,7 @@
             <div class="hero-content">
                 <h1 class="fade-in">BUILDING THE FUTURE OF SECURE TECHNOLOGY</h1>
                 <div class="hero-divider fade-in stagger-delay-1"></div>
-                <p class="hero-subtitle fade-in stagger-delay-2">Secure Worldz delivers elite cybersecurity and technology education for professionals shaping tomorrow's digital landscape. Master advanced skills through our intensive, project-based curriculum.</p>
+                <p class="hero-subtitle fade-in stagger-delay-2">Secure Worldz delivers elite cybersecurity and technology education for professionals shaping tomorrows digital landscape. Master advanced skills through our intensive project based curriculum.</p>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -516,7 +533,7 @@
     <section class="courses-section" id="courses">
         <div class="container">
             <h2 class="fade-in">ELITE COURSE CATALOG</h2>
-            <p class="subtitle fade-in">Ten specialized programs designed to transform intermediate practitioners into industry-leading experts</p>
+            <p class="subtitle fade-in">Ten specialized programs designed to transform intermediate practitioners into industry leading experts</p>
             
             <div class="courses-grid">
                 <!-- Course 1 -->
@@ -530,8 +547,8 @@
                 <!-- Course 2 -->
                 <div class="course-card fade-in stagger-delay-1">
                     <div class="course-number">02</div>
-                    <h3>AI Verse Web Labs – AI-Driven Web Engineering</h3>
-                    <p class="course-desc">Build intelligent web applications using cutting-edge AI models, automated workflows, and adaptive interfaces.</p>
+                    <h3>AI Verse Web Labs – AI Driven Web Engineering</h3>
+                    <p class="course-desc">Build intelligent web applications using cutting edge AI models, automated workflows, and adaptive interfaces.</p>
                     <div class="course-link">View Syllabus →</div>
                 </div>
 
@@ -539,7 +556,7 @@
                 <div class="course-card fade-in stagger-delay-2">
                     <div class="course-number">03</div>
                     <h3>Hunt Elite – Professional Bug Bounty & Exploit Analysis</h3>
-                    <p class="course-desc">Develop advanced vulnerability discovery skills and learn the methodology of top-tier security researchers.</p>
+                    <p class="course-desc">Develop advanced vulnerability discovery skills and learn the methodology of top tier security researchers.</p>
                     <div class="course-link">View Syllabus →</div>
                 </div>
 
@@ -571,7 +588,7 @@
                 <div class="course-card fade-in">
                     <div class="course-number">07</div>
                     <h3>Code Foundry – Professional Programming Language Mastery</h3>
-                    <p class="course-desc">Achieve deep fluency in multiple programming paradigms and language-agnostic problem-solving.</p>
+                    <p class="course-desc">Achieve deep fluency in multiple programming paradigms and language agnostic problem solving.</p>
                     <div class="course-link">View Syllabus →</div>
                 </div>
 
@@ -579,15 +596,15 @@
                 <div class="course-card fade-in stagger-delay-1">
                     <div class="course-number">08</div>
                     <h3>Startup Gene Labs – Venture Creation & Startup Scaling</h3>
-                    <p class="course-desc">From ideation to execution: learn the systems and strategies for building high-growth technology ventures.</p>
+                    <p class="course-desc">From ideation to execution learn the systems and strategies for building high growth technology ventures.</p>
                     <div class="course-link">View Syllabus →</div>
                 </div>
 
                 <!-- Course 9 -->
                 <div class="course-card fade-in stagger-delay-2">
                     <div class="course-number">09</div>
-                    <h3>CLI++ Systems – C++ Command-Line Tool Engineering for Linux</h3>
-                    <p class="course-desc">Engineer high-performance CLI tools and system utilities using modern C++ on Linux platforms.</p>
+                    <h3>CLI++ Systems – C++ Command Line Tool Engineering for Linux</h3>
+                    <p class="course-desc">Engineer high performance CLI tools and system utilities using modern C++ on Linux platforms.</p>
                     <div class="course-link">View Syllabus →</div>
                 </div>
 
@@ -595,7 +612,7 @@
                 <div class="course-card fade-in">
                     <div class="course-number">10</div>
                     <h3>APMan – API Development</h3>
-                    <p class="course-desc">Design, build, secure, and scale production-grade APIs for modern web and mobile applications.</p>
+                    <p class="course-desc">Design, build, secure, and scale production grade APIs for modern web and mobile applications.</p>
                     <div class="course-link">View Syllabus →</div>
                 </div>
             </div>
@@ -606,21 +623,25 @@
     <section id="mission">
         <div class="container">
             <h2 class="fade-in">OUR MISSION</h2>
-            <p class="subtitle fade-in">To create the most effective, intensive technical education system for cybersecurity and software professionals</p>
+            <p class="subtitle fade-in">To create the most effective intensive technical education system for cybersecurity and software professionals</p>
             
             <div style="max-width: 900px; margin: 0 auto;">
                 <p style="font-size: 1.3rem; line-height: 1.9; opacity: 0.9; margin-bottom: 2.5rem;" class="fade-in">
-                    At Secure Worldz, we believe true expertise comes from immersive, project-based learning. Our curriculum is engineered by industry practitioners who have secured Fortune 500 companies, built scalable systems, and launched successful tech ventures.
+                    At Secure Worldz, we believe true expertise comes from immersive, project based learning. Our curriculum is engineered by industry practitioners who have secured 6+ companies, built scalable systems, and launched successful tech ventures.
                 </p>
+                
+                <div class="company-info fade-in">
+                    <p><strong>Secure Worldz</strong> is an educational initiative powered by <strong>ProWorldz Group of Companies</strong>. We deliver premium technology education focused on cybersecurity, software development, and business strategy.</p>
+                </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
                     <div class="fade-in">
-                        <h4 style="margin-bottom: 1rem;">Practice-Forward Learning</h4>
-                        <p style="opacity: 0.8;">80% hands-on projects, 20% theory. Every concept is immediately applied to real-world scenarios.</p>
+                        <h4 style="margin-bottom: 1rem;">Practice Forward Learning</h4>
+                        <p style="opacity: 0.8;">80% hands on projects, 20% theory. Every concept is immediately applied to real world scenarios.</p>
                     </div>
                     
                     <div class="fade-in stagger-delay-1">
-                        <h4 style="margin-bottom: 1rem;">Industry-Relevant Curriculum</h4>
+                        <h4 style="margin-bottom: 1rem;">Industry Relevant Curriculum</h4>
                         <p style="opacity: 0.8;">Courses updated quarterly based on emerging threats, technologies, and market demands.</p>
                     </div>
                     
@@ -639,32 +660,51 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">SECURE WORLDZ</div>
-                    <p class="footer-text">Elite cybersecurity and technology education for professionals shaping tomorrow's digital landscape.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li><a href="#courses">All Programs</a></li>
-                        <li><a href="#courses">Cybersecurity</a></li>
-                        <li><a href="#courses">Development</a></li>
-                        <li><a href="#courses">Business</a></li>
-                    </ul>
+                    <p class="footer-text">Elite cybersecurity and technology education for professionals shaping tomorrows digital landscape.</p>
+                    <p class="footer-text" style="margin-top: 1rem;">An educational initiative by <strong>ProWorldz Group of Companies</strong></p>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Connect</h4>
+                    <p style="opacity: 0.7; margin-bottom: 1rem;">Follow us on social media</p>
+                    <div class="social-media">
+                        <a href="https://twitter.com/secureworldz" class="social-icon" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/secureworldz" class="social-icon" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/secureworldz" class="social-icon" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://youtube.com/secureworldz" class="social-icon" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://instagram.com/secureworldz" class="social-icon" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/secureworldz" class="social-icon" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://t.me/secureworldz" class="social-icon" target="_blank">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
                     <ul>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#mission">Mission</a></li>
-                        <li><a href="#contact">Partnerships</a></li>
-                        <li><a href="#contact">Careers</a></li>
+                        <li><a href="mailto:contact@secureworldz.com">contact@secureworldz.com</a></li>
+                        <li><a href="tel:+11234567890">+1 (123) 456-7890</a></li>
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#courses">All Courses</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                © 2023 SECURE WORLDZ. All rights reserved. Elite education for the digital frontier.
+                © 2023 SECURE WORLDZ. An initiative of ProWorldz Group of Companies. All rights reserved.
             </div>
         </div>
     </footer>
@@ -692,16 +732,16 @@
         // Course card click functionality
         const courseCards = document.querySelectorAll('.course-card');
         const pdfLinks = [
-            'https://drive.google.com/file/d/1abc123def456ghi789jkl/view?usp=sharing',
-            'https://drive.google.com/file/d/2mno345pqr678stu901vwx/view?usp=sharing',
-            'https://drive.google.com/file/d/3yza456bcd789efg012hij/view?usp=sharing',
-            'https://drive.google.com/file/d/4klm789nop123qrs456tuv/view?usp=sharing',
-            'https://drive.google.com/file/d/5wxy901zab234cde567fgh/view?usp=sharing',
-            'https://drive.google.com/file/d/6ijk234lmn567opq890rst/view?usp=sharing',
-            'https://drive.google.com/file/d/7uvw345xyz678abc901def/view?usp=sharing',
-            'https://drive.google.com/file/d/8ghi567jkl890mno123pqr/view?usp=sharing',
-            'https://drive.google.com/file/d/9stu789vwx012yza345bcd/view?usp=sharing',
-            'https://drive.google.com/file/d/0efg012hij345klm678nop/view?usp=sharing'
+            'https://drive.google.com/file/d/YOUR_SECURE_X_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_AI_VERSE_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_HUNT_ELITE_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_CREATIVE_CRAFT_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_PY_DESK_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_BIZ_DEV_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_CODE_FOUNDRY_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_STARTUP_GENE_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_CLI_PLUS_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_APMAN_PDF_ID/view?usp=sharing'
         ];
 
         courseCards.forEach((card, index) => {
