@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMH Tech Hub | Elite Tech Education</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --transition-speed: 0.3s;
+            --border-radius: 12px;
+            --card-padding: 2rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: opacity var(--transition-speed);
+            position: relative;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--white);
+            transition: width var(--transition-speed);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 5rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 2px;
+            background-color: var(--white);
+            margin: 2.5rem 0;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scroll-text {
+            font-size: 0.875rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 50px;
+            background-color: var(--white);
+            animation: scrollLine 2s infinite;
+        }
+
+        @keyframes scrollLine {
+            0% {
+                height: 0;
+                opacity: 0;
+            }
+            50% {
+                height: 50px;
+                opacity: 1;
+            }
+            100% {
+                height: 0;
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background-color: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            padding: var(--card-padding);
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--white);
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--white);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .course-desc {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            opacity: 0.6;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--white);
+            font-size: 1.25rem;
+            transition: opacity var(--transition-speed);
+        }
+
+        .social-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 3rem;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .courses-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.98);
+                padding: 2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all var(--transition-speed);
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding-top: 7rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-card {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">HMH</span>
+                <span>TECH HUB</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="reveal">ELITE TECH EDUCATION FOR THE DIGITAL FRONTIER</h1>
+                <div class="hero-divider reveal"></div>
+                <p class="reveal">Advanced technical training for professionals seeking mastery in cybersecurity, AI engineering, software development, and venture creation. A premium learning experience designed for the top 1% of tech talent.</p>
+                <p class="reveal">Our curriculum is engineered for impact, combining theoretical depth with practical execution to produce industry leaders and innovators.</p>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-text">EXPLORE</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+            <h2 class="reveal">PREMIUM COURSE CATALOG</h2>
+            <p class="subtitle reveal">Specialized programs designed to transform intermediate practitioners into elite professionals</p>
+            
+            <div class="courses-grid">
+                <!-- Course cards will be generated here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container text-center">
+            <h2 class="reveal">THE HMH METHODOLOGY</h2>
+            <p class="subtitle reveal mb-3">A rigorous approach to technical mastery and professional excellence</p>
+            
+            <div class="about-content" style="max-width: 800px; margin: 0 auto;">
+                <p class="reveal">HMH Tech Hub operates at the intersection of advanced technology education and professional execution. We don't just teach concepts—we engineer practitioners capable of solving complex, real-world problems.</p>
+                <p class="reveal">Our curriculum is designed by industry leaders who have built systems at scale, secured critical infrastructure, and launched successful ventures. Each course combines theoretical foundations with practical application, ensuring that graduates don't just understand technology—they can wield it effectively.</p>
+                <p class="reveal">We maintain a highly selective admission process to ensure peer-to-peer learning at the highest level. Our community consists of professionals, founders, and specialists who are pushing the boundaries of what's possible in technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-logo">HMH TECH HUB</div>
+            <p class="footer-text">An elite educational platform for advanced technology professionals. All programs are designed for intermediate to expert practitioners seeking to master their craft.</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p class="footer-text mt-3">&copy; 2023 HMH Tech Hub. All rights reserved. Elite education for the digital frontier.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Course data - each with title and Google Drive PDF placeholder link
+        const courses = [
+            { 
+                title: "Secure X – Advanced Cybersecurity & Digital Defense", 
+                desc: "Master modern offensive and defensive security techniques, threat intelligence, and enterprise protection strategies.",
+                icon: "fa-shield-alt",
+                link: "https://drive.google.com/file/d/1abc123def456ghi789jkl/view?usp=sharing"
+            },
+            { 
+                title: "AI Verse Web Labs – AI-Driven Web Engineering", 
+                desc: "Build intelligent web applications using cutting-edge AI models, automated workflows, and adaptive interfaces.",
+                icon: "fa-robot",
+                link: "https://drive.google.com/file/d/2mno345pqr678stu901vwx/view?usp=sharing"
+            },
+            { 
+                title: "Hunt Elite – Professional Bug Bounty & Exploit Analysis", 
+                desc: "Develop advanced vulnerability discovery skills and learn the methodology of top-tier security researchers.",
+                icon: "fa-search",
+                link: "https://drive.google.com/file/d/3yza456bcd789efg012hij/view?usp=sharing"
+            },
+            { 
+                title: "Creative Craft – Strategic Visual Communication Design", 
+                desc: "Master visual storytelling, brand systems, and interface design for technology products and services.",
+                icon: "fa-palette",
+                link: "https://drive.google.com/file/d/4klm789nop123qrs456tuv/view?usp=sharing"
+            },
+            { 
+                title: "Py Desk Systems – Enterprise Python Desktop Development", 
+                desc: "Build robust, scalable desktop applications with Python for enterprise environments and professional workflows.",
+                icon: "fa-desktop",
+                link: "https://drive.google.com/file/d/5wxy901zab234cde567fgh/view?usp=sharing"
+            },
+            { 
+                title: "Biz Dev – Business Strategy & Software Development", 
+                desc: "Combine technical execution with business strategy to launch, scale, and monetize software products.",
+                icon: "fa-chart-line",
+                link: "https://drive.google.com/file/d/6ijk234lmn567opq890rst/view?usp=sharing"
+            },
+            { 
+                title: "Code Foundry – Professional Programming Language Mastery", 
+                desc: "Achieve deep fluency in multiple programming paradigms and language-agnostic problem-solving.",
+                icon: "fa-code",
+                link: "https://drive.google.com/file/d/7uvw345xyz678abc901def/view?usp=sharing"
+            },
+            { 
+                title: "Startup Gene Labs – Venture Creation & Startup Scaling", 
+                desc: "From ideation to execution: learn the systems and strategies for building high-growth technology ventures.",
+                icon: "fa-flask",
+                link: "https://drive.google.com/file/d/8ghi567jkl890mno123pqr/view?usp=sharing"
+            },
+            { 
+                title: "CLI++ Systems – C++ Command-Line Tool Engineering for Linux", 
+                desc: "Engineer high-performance CLI tools and system utilities using modern C++ on Linux platforms.",
+                icon: "fa-terminal",
+                link: "https://drive.google.com/file/d/9stu789vwx012yza345bcd/view?usp=sharing"
+            },
+            { 
+                title: "APMan – API Development", 
+                desc: "Design, build, secure, and scale production-grade APIs for modern web and mobile applications.",
+                icon: "fa-network-wired",
+                link: "https://drive.google.com/file/d/0efg012hij345klm678nop/view?usp=sharing"
+            }
+        ];
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Generate course cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const coursesGrid = document.querySelector('.courses-grid');
+            
+            courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card reveal';
+                card.innerHTML = `
+                    <div class="course-icon">
+                        <i class="fas ${course.icon}"></i>
+                    </div>
+                    <h3>${course.title}</h3>
+                    <p class="course-desc">${course.desc}</p>
+                `;
+                
+                // Make card clickable
+                card.addEventListener('click', () => {
+                    window.open(course.link, '_blank');
+                });
+                
+                // Change cursor on hover
+                card.addEventListener('mouseenter', () => {
+                    card.style.cursor = 'pointer';
+           
