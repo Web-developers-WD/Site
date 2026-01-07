@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -34,6 +35,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             font-weight: 400;
+            user-select: none;
         }
 
         .container {
@@ -119,8 +121,9 @@
         }
 
         .logo-img {
-            height: 40px;
+            height: 60px;
             width: auto;
+            border-radius: 2cap;
             filter: invert(1);
         }
 
@@ -231,7 +234,7 @@
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
             margin-top: 3rem;
         }
@@ -246,6 +249,11 @@
             position: relative;
             overflow: hidden;
             height: 100%;
+        }
+
+        /* Make last course card centered when there are 10 courses (3x3 + 1) */
+        .course-card:last-child:nth-child(3n+1) {
+            grid-column: 2;
         }
 
         .course-card:hover {
@@ -294,20 +302,27 @@
         }
 
         .course-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all var(--transition);
-        }
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    font-weight: 500;
+    /* REMOVE THESE LINES: */
+    /* opacity: 0; */
+    /* transform: translateY(10px); */
+    /* ADD THIS INSTEAD: */
+    opacity: 0.9;
+    transition: all var(--transition);
+}
 
-        .course-card:hover .course-link {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.course-card:hover .course-link {
+    /* REMOVE THESE LINES: */
+    /* opacity: 1; */
+    /* transform: translateY(0); */
+    /* ADD THIS INSTEAD: */
+    opacity: 1;
+    color: var(--white);
+}
 
         /* ===== FOOTER ===== */
         footer {
@@ -344,22 +359,100 @@
             opacity: 0.9;
         }
 
-        .social-media {
+        /* Contact Section Styles */
+        .contact-grid {
             display: flex;
+            flex-direction: column;
             gap: 1.2rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 1.1rem;
+            color: #FFFFFF;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.7;
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-link {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            word-break: break-all;
+        }
+
+        .contact-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .contact-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        /* Social Media Grid */
+        .social-media-grid {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
         }
 
         .social-icon {
-            color: var(--white);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
             font-size: 1.3rem;
-            opacity: 0.7;
-            transition: all var(--transition);
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .social-icon:hover {
-            opacity: 1;
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
         }
 
@@ -380,15 +473,35 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
             .courses-grid {
-                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Make last course card centered when there are 10 courses (2x5) */
+            .course-card:last-child:nth-child(2n+1) {
+                grid-column: span 2;
+                justify-self: center;
+                max-width: 500px;
             }
         }
 
         @media (max-width: 768px) {
             .container {
                 padding: 0 1.5rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            /* Reset centering for mobile */
+            .course-card:last-child:nth-child(2n+1),
+            .course-card:last-child:nth-child(3n+1) {
+                grid-column: 1;
+                justify-self: stretch;
+                max-width: 100%;
             }
             
             nav {
@@ -431,11 +544,6 @@
             .hero {
                 padding-top: 8rem;
             }
-
-            .courses-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
             
             .course-card {
                 padding: 2rem;
@@ -448,6 +556,33 @@
             
             .logo-img {
                 height: 35px;
+            }
+            
+            .contact-item {
+                gap: 0.8rem;
+            }
+            
+            .contact-icon {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .contact-icon i {
+                font-size: 1rem;
+            }
+            
+            .contact-label {
+                font-size: 0.8rem;
+            }
+            
+            .contact-link {
+                font-size: 0.9rem;
+            }
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
 
@@ -493,11 +628,12 @@
     </style>
 </head>
 <body>
+    <!-- <script src="https://kit.fontawesome.com/4b0b9b5a3a.js" crossorigin="anonymous"></script> -->
     <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="https://img.icons8.com/ios-filled/100/ffffff/cyber-security.png" alt="Secure Worldz Logo" class="logo-img">
+                <img src="logo.png" alt="Secure Worldz Logo" class="logo-img">
                 <span>SECURE WORLDZ</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -665,46 +801,37 @@
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Connect</h4>
-                    <p style="opacity: 0.7; margin-bottom: 1rem;">Follow us on social media</p>
-                    <div class="social-media">
-                        <a href="https://twitter.com/secureworldz" class="social-icon" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://linkedin.com/company/secureworldz" class="social-icon" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/secureworldz" class="social-icon" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://youtube.com/secureworldz" class="social-icon" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://instagram.com/secureworldz" class="social-icon" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://facebook.com/secureworldz" class="social-icon" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://t.me/secureworldz" class="social-icon" target="_blank">
-                            <i class="fab fa-telegram"></i>
-                        </a>
+                    <h4>Contact & Connect</h4>
+                    <div class="social-media-grid">
+                        <div class="social-links">
+                            <a href="https://wa.me/918754418387" target="_blank" class="social-icon" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://t.me/DragoHub" target="_blank" class="social-icon" title="Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@jai_tech1" target="_blank" class="social-icon" title="Secure worldz">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://discord.gg/HydZcvfg" target="_blank" class="social-icon" title="Discord">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                            <a href="https://secureworldz.vercel.app" target="_blank" class="social-icon" title="Website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                            <a href="mailto:info.secureworldz@gmail.com" class="social-icon" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://proworldz.page.gd" target="_blank" class="social-icon" title="Proworldz">
+                                <i class="fas fa-building"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:contact@secureworldz.com">contact@secureworldz.com</a></li>
-                        <li><a href="tel:+11234567890">+1 (123) 456-7890</a></li>
-                        <li><a href="#mission">Our Mission</a></li>
-                        <li><a href="#courses">All Courses</a></li>
-                    </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                © 2023 SECURE WORLDZ. An initiative of ProWorldz Group of Companies. All rights reserved.
+                © 2026 SECURE WORLDZ. An initiative of ProWorldz Group of Companies. All rights reserved.
             </div>
         </div>
     </footer>
@@ -732,7 +859,7 @@
         // Course card click functionality
         const courseCards = document.querySelectorAll('.course-card');
         const pdfLinks = [
-            'https://drive.google.com/file/d/YOUR_SECURE_X_PDF_ID/view?usp=sharing',
+            'secure-x.pdf',
             'https://drive.google.com/file/d/YOUR_AI_VERSE_PDF_ID/view?usp=sharing',
             'https://drive.google.com/file/d/YOUR_HUNT_ELITE_PDF_ID/view?usp=sharing',
             'https://drive.google.com/file/d/YOUR_CREATIVE_CRAFT_PDF_ID/view?usp=sharing',
@@ -801,11 +928,6 @@
             lastScroll = currentScroll;
         });
 
-        // Add Font Awesome for icons
-        const faScript = document.createElement('script');
-        faScript.src = 'https://kit.fontawesome.com/4b0b9b5a3a.js';
-        faScript.crossOrigin = 'anonymous';
-        document.head.appendChild(faScript);
     </script>
 </body>
 </html>
