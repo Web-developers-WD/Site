@@ -125,7 +125,6 @@
             height: 60px;
             width: auto;
             border-radius: 2cap;
-            filter: invert(1);
         }
 
         nav ul {
@@ -233,11 +232,62 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Courses header styling */
+        .courses-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .courses-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .courses-header .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Scroll indicator styling - courses specific */
+        .courses-section .scroll-indicator {
+            position: static;
+            transform: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            padding: 1rem 0;
+        }
+
+        .courses-section .scroll-text {
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .courses-section .scroll-arrow {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            color: var(--white);
+            opacity: 0.7;
+        }
+
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .course-card {
@@ -303,27 +353,28 @@
         }
 
         .course-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-    font-weight: 500;
-    /* REMOVE THESE LINES: */
-    /* opacity: 0; */
-    /* transform: translateY(10px); */
-    /* ADD THIS INSTEAD: */
-    opacity: 0.9;
-    transition: all var(--transition);
-}
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            font-weight: 500;
+            opacity: 0.9;
+            transition: all var(--transition);
+        }
 
-.course-card:hover .course-link {
-    /* REMOVE THESE LINES: */
-    /* opacity: 1; */
-    /* transform: translateY(0); */
-    /* ADD THIS INSTEAD: */
-    opacity: 1;
-    color: var(--white);
-}
+        .course-card:hover .course-link {
+            opacity: 1;
+            color: var(--white);
+        }
+
+        /* ===== MISSION SECTION ===== */
+        .company-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
 
         /* ===== FOOTER ===== */
         footer {
@@ -463,14 +514,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             opacity: 0.5;
-        }
-
-        .company-info {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -629,7 +672,6 @@
     </style>
 </head>
 <body>
-    <!-- <script src="https://kit.fontawesome.com/4b0b9b5a3a.js" crossorigin="anonymous"></script> -->
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -651,28 +693,18 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2 class="fade-in">ELITE COURSE CATALOG</h2>
-                <p class="subtitle fade-in">Ten specialized programs designed to transform intermediate practitioners into industry leading experts</p>
-                <!-- <p class="hero-subtitle fade-in stagger-delay-2">Secure Worldz delivers elite cybersecurity and technology education for professionals shaping tomorrows digital landscape. Master advanced skills through our intensive project based curriculum.</p> -->
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span class="scroll-text">Explore Courses</span>
-            <div class="scroll-arrow">↓</div>
-        </div>
-    </section>
 
     <!-- Courses Section -->
     <section class="courses-section" id="courses">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">BUILDING THE FUTURE OF SECURE TECHNOLOGY</h1>
-                <div class="hero-divider fade-in stagger-delay-1"></div>
-                <!-- <p class="hero-subtitle fade-in stagger-delay-2">Secure Worldz delivers elite cybersecurity and technology education for professionals shaping tomorrows digital landscape. Master advanced skills through our intensive project based curriculum.</p> -->
+            <div class="courses-header">
+                <h2 class="fade-in">ELITE COURSE CATALOG</h2>
+                <p class="subtitle fade-in">Ten specialized programs designed to transform intermediate practitioners into industry leading experts</p>
+                
+                <div class="scroll-indicator">
+                    <span class="scroll-text">Explore Courses</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
             </div>
             
             <div class="courses-grid">
@@ -758,41 +790,45 @@
             </div>
         </div>
     </section>
-
-    <!-- Mission Section -->
+  
     <section id="mission">
-        <div class="container">
-            <h2 class="fade-in">OUR MISSION</h2>
-            <p class="subtitle fade-in">To create the most effective intensive technical education system for cybersecurity and software professionals</p>
+    <div class="container">
+        <div style="text-align: center;">
+            <h1 class="fade-in" style="text-align: center;">BUILDING THE FUTURE OF SECURE TECHNOLOGY</h1>
+            <div class="hero-divider fade-in stagger-delay-1" style="margin-left: auto; margin-right: auto;"></div>
+        </div>
+        
+        <h2 class="fade-in">OUR MISSION</h2>
+        <p class="subtitle fade-in">To create the most effective intensive technical education system for cybersecurity and software professionals</p>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+            <p style="font-size: 1.3rem; line-height: 1.9; opacity: 0.9; margin-bottom: 2.5rem; text-align: center;" class="fade-in">
+                At Secure Worldz, we believe true expertise comes from immersive, project based learning. Our curriculum is engineered by industry practitioners who have secured 6+ companies, built scalable systems, and launched successful tech ventures.
+            </p>
             
-            <div style="max-width: 900px; margin: 0 auto;">
-                <p style="font-size: 1.3rem; line-height: 1.9; opacity: 0.9; margin-bottom: 2.5rem;" class="fade-in">
-                    At Secure Worldz, we believe true expertise comes from immersive, project based learning. Our curriculum is engineered by industry practitioners who have secured 6+ companies, built scalable systems, and launched successful tech ventures.
-                </p>
-                
-                <div class="company-info fade-in">
-                    <p><strong>Secure Worldz</strong> is an educational initiative powered by <strong>ProWorldz Group of Companies</strong>. We deliver premium technology education focused on cybersecurity, software development, and business strategy.</p>
+            <div class="company-info fade-in" style="text-align: center;">
+                <p><strong>Secure Worldz</strong> is an educational initiative powered by <strong>ProWorldz Group of Companies</strong>. We deliver premium technology education focused on cybersecurity, software development, and business strategy.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
+                <div class="fade-in">
+                    <h4 style="margin-bottom: 1rem;">Practice Forward Learning</h4>
+                    <p style="opacity: 0.8;">80% hands on projects, 20% theory. Every concept is immediately applied to real world scenarios.</p>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
-                    <div class="fade-in">
-                        <h4 style="margin-bottom: 1rem;">Practice Forward Learning</h4>
-                        <p style="opacity: 0.8;">80% hands on projects, 20% theory. Every concept is immediately applied to real world scenarios.</p>
-                    </div>
-                    
-                    <div class="fade-in stagger-delay-1">
-                        <h4 style="margin-bottom: 1rem;">Industry Relevant Curriculum</h4>
-                        <p style="opacity: 0.8;">Courses updated quarterly based on emerging threats, technologies, and market demands.</p>
-                    </div>
-                    
-                    <div class="fade-in stagger-delay-2">
-                        <h4 style="margin-bottom: 1rem;">Elite Community</h4>
-                        <p style="opacity: 0.8;">Network with top security researchers, developers, and tech leaders in our private community.</p>
-                    </div>
+                <div class="fade-in stagger-delay-1">
+                    <h4 style="margin-bottom: 1rem;">Industry Relevant Curriculum</h4>
+                    <p style="opacity: 0.8;">Courses updated quarterly based on emerging threats, technologies, and market demands.</p>
+                </div>
+                
+                <div class="fade-in stagger-delay-2">
+                    <h4 style="margin-bottom: 1rem;">Elite Community</h4>
+                    <p style="opacity: 0.8;">Network with top security researchers, developers, and tech leaders in our private community.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer id="contact">
@@ -864,15 +900,15 @@
         const courseCards = document.querySelectorAll('.course-card');
         const pdfLinks = [
             'secure-x.pdf',
-            'Ai.pdf',
-            'Hunt.pdf',
-            'Canva.pdf',
-            'py.pdf',
-            'biz.pdf',
-            'Code.pdf',
-            'startup.pdf',
-            'CLI.pdf',
-            'api.pdf'
+            'https://drive.google.com/file/d/YOUR_AI_VERSE_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_HUNT_ELITE_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_CREATIVE_CRAFT_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_PY_DESK_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_BIZ_DEV_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_CODE_FOUNDRY_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_STARTUP_GENE_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_CLI_PLUS_PDF_ID/view?usp=sharing',
+            'https://drive.google.com/file/d/YOUR_APMAN_PDF_ID/view?usp=sharing'
         ];
 
         courseCards.forEach((card, index) => {
@@ -931,7 +967,6 @@
             
             lastScroll = currentScroll;
         });
-
     </script>
 </body>
 </html>
